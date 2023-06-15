@@ -1,0 +1,34 @@
+{
+  "name": "Something Vaguely Mobile",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "../"
+  },
+  "appPort": [3000],
+  "postStartCommand": "yarn install",
+  "postAttachCommand": "yarn start",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal": {
+          "integrated": {
+            "shell": {
+              "linux": "bash"
+            }
+          }
+        },
+        "search.exclude": {
+          "**/node_modules": true
+        }
+      },
+      "extensions": [
+        "vscode.typescript-language-features",
+        "GitHub.copilot"
+      ]
+    }
+  },
+  "forwardPorts": ["3001:3000"],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
+  "workspaceFolder": "/workspace",
+  "runArgs": ["--network", "host"]
+}
