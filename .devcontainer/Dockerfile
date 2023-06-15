@@ -9,4 +9,4 @@ RUN yarn install && yarn global add expo-cli
 
 COPY . .
 
-EXPOSE 19000
+EXPOSE 19000 19001 19002
